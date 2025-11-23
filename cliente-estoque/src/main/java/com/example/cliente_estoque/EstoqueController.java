@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class EstoqueController {
+public class ConfigController {
 
-	@Value("${servico.mensagem}")
-	private String mensagemConfiguracao;
+	@Value("${mensagem.boasvindas:Configuração não carregada}")
+	private String mensagem;
 
-	@GetMapping("/estoque/info")
-	public String getInfo() {
-		return "ESTOQUE: Configuracao Carregada: " + mensagemConfiguracao;
+	@GetMapping("/mensagem")
+	public String mensagem() {
+		return this.mensagem;
 	}
 }

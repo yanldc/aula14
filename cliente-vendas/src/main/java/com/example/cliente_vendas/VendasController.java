@@ -5,14 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class VendasController {
+public class ConfigController {
 
-	// Injeta a propriedade 'servico.mensagem' que vem do Config Server/Git
-	@Value("${servico.mensagem}")
-	private String mensagemConfiguracao;
+	@Value("${mensagem.boasvindas:Configuração não carregada}")
+	private String mensagem;
 
-	@GetMapping("/vendas/info")
-	public String getInfo() {
-		return "VENDAS: Configuracao Carregada: " + mensagemConfiguracao;
+	@GetMapping("/mensagem")
+	public String mensagem() {
+		return this.mensagem;
 	}
 }
